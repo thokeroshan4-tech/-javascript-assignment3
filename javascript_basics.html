@@ -69,19 +69,15 @@
     <div class="container">
         <h1>JavaScript Program</h1>
         
-        <!-- A) Variables Section -->
         <h2>A) Variables (var, let, const)</h2>
         <div id="variables-output" class="output">Click the page to run the program...</div>
-        
-        <!-- B) Data Types Section -->
+       
         <h2>B) Data Types</h2>
         <div id="datatypes-output" class="output"></div>
-        
-        <!-- C) Array Operations -->
+      
         <h2>C) Array Search & Sort</h2>
         <div id="array-output" class="output"></div>
         
-        <!-- D) Temperature Conversion -->
         <h2>D) Temperature Conversion Function</h2>
         <div class="input-group">
             <input type="number" id="temp-input" placeholder="Enter temperature" value="25">
@@ -99,8 +95,7 @@
             <button onclick="convertTemp()">Convert</button>
         </div>
         <div id="temp-output" class="output"></div>
-        
-        <!-- E) Fibonacci Series -->
+
         <h2>E) Fibonacci Series (Using Recursion)</h2>
         <div class="input-group">
             <input type="number" id="fib-input" placeholder="Enter position (0-20)" value="10" min="0" max="20">
@@ -110,89 +105,73 @@
     </div>
 
     <script>
-        // ========================================
-        // A) VARIABLES DEMONSTRATION
-        // ========================================
+       
         function demonstrateVariables() {
             let output = "=== VARIABLES IN JAVASCRIPT ===\n\n";
-            
-            // VAR - Function scoped, can be redeclared
+          
             var name = "John";
             output += "1. VAR (function-scoped, can be redeclared):\n";
             output += "   var name = 'John' → " + name + "\n";
-            var name = "Jane"; // Redeclaration allowed
+            var name = "Jane"; 
             output += "   var name = 'Jane' → " + name + "\n\n";
-            
-            // LET - Block scoped, cannot be redeclared
+        
             let age = 25;
             output += "2. LET (block-scoped, cannot be redeclared):\n";
             output += "   let age = 25 → " + age + "\n";
-            age = 30; // Update allowed
+            age = 30; 
             output += "   age = 30 → " + age + "\n\n";
-            
-            // CONST - Block scoped, cannot be reassigned
+           
             const PI = 3.14159;
             output += "3. CONST (constant, cannot be reassigned):\n";
             output += "   const PI = 3.14159 → " + PI + "\n";
             
             const person = { name: "Alice", age: 25 };
             output += "   const person = {name: 'Alice', age: 25}\n";
-            person.age = 26; // Properties can be modified
+            person.age = 26; 
             output += "   person.age = 26 → " + JSON.stringify(person) + "\n";
             
             document.getElementById('variables-output').textContent = output;
         }
         
-        // ========================================
-        // B) DATA TYPES DEMONSTRATION
-        // ========================================
         function demonstrateDataTypes() {
             let output = "=== DATA TYPES IN JAVASCRIPT ===\n\n";
             
-            // 1. String
             let str = "Hello JavaScript";
             output += "1. STRING:\n";
             output += "   Value: '" + str + "'\n";
             output += "   Type: " + typeof str + "\n";
             output += "   Length: " + str.length + "\n\n";
-            
-            // 2. Number
+           
             let num = 42.5;
             output += "2. NUMBER:\n";
             output += "   Value: " + num + "\n";
             output += "   Type: " + typeof num + "\n\n";
-            
-            // 3. BigInt
+           
             let bigInt = 9007199254740991n;
             output += "3. BIGINT:\n";
             output += "   Value: " + bigInt + "\n";
             output += "   Type: " + typeof bigInt + "\n\n";
             
-            // 4. Boolean
             let bool = true;
             output += "4. BOOLEAN:\n";
             output += "   Value: " + bool + "\n";
             output += "   Type: " + typeof bool + "\n\n";
-            
-            // 5. Undefined
+          
             let undef;
             output += "5. UNDEFINED:\n";
             output += "   Value: " + undef + "\n";
             output += "   Type: " + typeof undef + "\n\n";
             
-            // 6. Null
             let nul = null;
             output += "6. NULL:\n";
             output += "   Value: " + nul + "\n";
             output += "   Type: " + typeof nul + " (JavaScript quirk!)\n\n";
-            
-            // 7. Symbol
+         
             let sym = Symbol("unique");
             output += "7. SYMBOL:\n";
             output += "   Value: " + sym.toString() + "\n";
             output += "   Type: " + typeof sym + "\n\n";
-            
-            // 8. Object
+          
             let obj = { name: "John", age: 30, city: "Mumbai" };
             output += "8. OBJECT:\n";
             output += "   Value: " + JSON.stringify(obj, null, 2) + "\n";
@@ -200,42 +179,33 @@
             
             document.getElementById('datatypes-output').textContent = output;
         }
-        
-        // ========================================
-        // C) ARRAY SEARCH AND SORT
-        // ========================================
+       
         function demonstrateArrays() {
             let output = "=== ARRAY SEARCH AND SORT ===\n\n";
             
             let numbers = [64, 34, 25, 12, 22, 11, 90, 45];
             output += "Original Array: " + JSON.stringify(numbers) + "\n\n";
-            
-            // SEARCH OPERATIONS
+           
             output += "--- SEARCH OPERATIONS ---\n";
             output += "indexOf(25): " + numbers.indexOf(25) + " (finds index)\n";
             output += "includes(90): " + numbers.includes(90) + " (checks existence)\n";
             output += "find(n > 50): " + numbers.find(n => n > 50) + " (finds first match)\n";
             output += "filter(n > 20): " + JSON.stringify(numbers.filter(n => n > 20)) + "\n\n";
-            
-            // SORT OPERATIONS
+          
             output += "--- SORT OPERATIONS ---\n";
             let ascending = [...numbers].sort((a, b) => a - b);
             output += "Ascending: " + JSON.stringify(ascending) + "\n";
             
             let descending = [...numbers].sort((a, b) => b - a);
             output += "Descending: " + JSON.stringify(descending) + "\n\n";
-            
-            // String array
+          
             let fruits = ["Banana", "Apple", "Mango", "Cherry", "Orange"];
             output += "String Array: " + JSON.stringify(fruits) + "\n";
             output += "Sorted: " + JSON.stringify([...fruits].sort()) + "\n";
             
             document.getElementById('array-output').textContent = output;
         }
-        
-        // ========================================
-        // D) TEMPERATURE CONVERSION FUNCTION
-        // ========================================
+       
         function celsiusToFahrenheit(c) {
             return (c * 9/5) + 32;
         }
@@ -265,14 +235,12 @@
             let fromUnit = document.getElementById('from-unit').value;
             let toUnit = document.getElementById('to-unit').value;
             let result;
-            
-            // Convert to Celsius first
+         
             let celsius;
             if (fromUnit === 'C') celsius = temp;
             else if (fromUnit === 'F') celsius = fahrenheitToCelsius(temp);
             else if (fromUnit === 'K') celsius = kelvinToCelsius(temp);
-            
-            // Convert from Celsius to target
+          
             if (toUnit === 'C') result = celsius;
             else if (toUnit === 'F') result = celsiusToFahrenheit(celsius);
             else if (toUnit === 'K') result = celsiusToKelvin(celsius);
@@ -291,10 +259,7 @@
             
             document.getElementById('temp-output').textContent = output;
         }
-        
-        // ========================================
-        // E) FIBONACCI SERIES (RECURSIVE)
-        // ========================================
+       
         function fibonacci(n) {
             if (n <= 0) return 0;
             if (n === 1) return 1;
@@ -311,8 +276,7 @@
             
             let output = "=== FIBONACCI SERIES (RECURSIVE) ===\n\n";
             output += "Calculating Fibonacci number at position: " + n + "\n\n";
-            
-            // Show the series up to n
+          
             output += "Fibonacci Series (0 to " + n + "):\n";
             let series = [];
             for (let i = 0; i <= n; i++) {
@@ -322,7 +286,6 @@
             
             output += "Fibonacci(" + n + ") = " + fibonacci(n) + "\n\n";
             
-            // Explain recursion
             output += "Recursive Formula:\n";
             output += "F(n) = F(n-1) + F(n-2)\n";
             output += "Base cases: F(0) = 0, F(1) = 1\n\n";
@@ -337,15 +300,13 @@
             document.getElementById('fib-output').textContent = output;
         }
         
-        // ========================================
-        // RUN ALL DEMONSTRATIONS ON PAGE LOAD
-        // ========================================
+    
         window.onload = function() {
             demonstrateVariables();
             demonstrateDataTypes();
             demonstrateArrays();
-            convertTemp(); // Run with default values
-            calculateFibonacci(); // Run with default value
+            convertTemp(); 
+            calculateFibonacci(); 
         };
     </script>
 </body>
